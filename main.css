@@ -1,0 +1,45 @@
+/*
+* {
+    margin: 0;
+    padding: 0;
+}*/
+
+html {
+    background: black;
+    font-family:sans-serif
+}
+
+section {
+    width: 85%;
+    margin: auto;
+    background: white;
+}
+
+div.container {
+    width: 60%;
+    margin: auto;
+}
+
+article {
+    width: 60%;
+    margin: auto;
+}
+
+small {
+    font-style: italic;
+}
+
+.bodyTxt,
+.artSnippetTxt {
+    font-size: 18px;
+    line-height: 27px;
+    text-align: justify;
+    padding-bottom: 25px;
+}
+
+.artHeadline,
+.listHeadline {
+    font-size: 36px;
+    line-height: 54px;
+    margin-bottom: 0;
+}
