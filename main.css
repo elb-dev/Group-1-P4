@@ -5,10 +5,11 @@
 }*/
 
 html {
+    background: black;
     font-family:sans-serif
 }
 
-.section {
+section {
     width: 85%;
     margin: auto;
     background: white;
@@ -19,7 +20,7 @@ div.container {
     margin: auto;
 }
 
-.article {
+article {
     width: 60%;
     margin: auto;
 }
