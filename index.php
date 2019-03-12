@@ -1,4 +1,6 @@
 <?php
+require 'inc_0700/config_inc.php';
+startSession();
 /**
 * News Aggregator - index.php - home
 * @package News Aggregator
@@ -14,10 +16,10 @@
 echo  
 
 $sql = '
-    SELECT c.category_id, f.subject feed_name, c.subject category_name, feed_id
-    FROM feed f
-    JOIN category c
-    ON f.category_id = c.category_id
+    SELECT c.CategoryID, f.subject FeedName, c.subject CategoryName, FeedID
+    FROM g1p4_feed f
+    JOIN g1p4_categories c
+    ON f.CategoryID = c.CategoryID
     ORDER BY c.subject';
 
 $db = db_conn();              //Make db connection
