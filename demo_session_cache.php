@@ -5,16 +5,12 @@ startSession();
 //die();
 
 //This decides what we do specifically.
-connectionTest();
 if(isset($_SESSION['Timer']) && isset($_SESSION['Feed']) && $_SESSION['Timer'] > time()){
-    echo 'Only show';
     showRSS();
 }else{
-    echo 'Request and show';
     requestRSS();
     showRSS();
 }
-connectionTest();
 
 //F  U  N  C  T  I  O  N  S
 function requestRSS()
@@ -22,28 +18,21 @@ function requestRSS()
         
     $request = "https://www.realwire.com/rss/?id=576&row=&view=Synopsis";
     $response = file_get_contents($request);
-    $xml = simplexml_load_string($response);
+
+    $_SESSION['Feed'] = $response;
     $_SESSION['Timer'] = time()+60*10;
-    
-    foreach($xml->channel->item as $story)
-    {
-        
-        $_SESSION['Feed'][] = array(
-            'Link' => strval($story->link),
-            'Title' => strval($story->title),
-            'Description' => strval($story->description),
-        );
-    }
 }
 
 function showRSS()
 {
-    
-    //echo 'Time until cache reset: '.($_SESSION['Timer'] - time());
-    //print '<h1>' . $_SESSION['Feed']->channel->Title . '</h1>';
-    foreach($_SESSION['Feed'] as $item)
+    echo '<p>Time left: '. ($_SESSION['Timer']-time()) .'</p>'; //Needs to not be shown.
+    $response = $_SESSION['Feed'];
+    $xml = simplexml_load_string($response);
+
+    print '<h1>' . $xml->channel->title . '</h1>';
+    foreach($xml->channel->item as $story)
     {
-        echo '<a href="' . $item['Link'] . '">' . $item['Title'] . '</a> <br /> <p>' . $item['Description'] . '</p><br /><br />';
+        echo '<a href="' . $story->link . '">' . $story->title . '</a> <br /> <p>' . $story->description . '</p><br /><br />';
     }
 }
 
