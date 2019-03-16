@@ -1,5 +1,5 @@
 <?php
-
+require 'inc_0700/config_inc.php';
 //provide credentials to connect with the database
 require 'credentials.php';
 //Common class definition
@@ -42,3 +42,12 @@ function getFeedData($catID) {
     $result = mysqli_query(Common::conn(),$sql) or die(trigger_error(mysqli_error(Common::conn()), E_USER_ERROR));
     return $result; 
 }//end getFeedData
+
+function ClearAll() {
+    unset($_SESSION['feeds']);
+}
+
+function ClearFeed($request) {
+    unset($_SESSION['feeds'][$request]);
+
+}

@@ -1,19 +1,12 @@
-<!doctype html>
-<html>
-    
-<head>
-    <meta charset="UTF-8">
-    <title>Feeds List</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="../css/style.css" type="text/css" rel="stylesheet">
-</head>
-
-<body>
+<?php
+require 'inc_0700/config_inc.php';
+get_header();
+?>
 <header>
 <h1>News Aggregator</h1>
     
 <?php
-require 'config/common.php';
+require 'inc_0700/common.php';
 require 'Feed.php';
 //get the category name from the URL
 $catName = $_GET['name'];
@@ -53,13 +46,7 @@ if(mysqli_num_rows($result) > 0) {
               </div>';
     }//end of foreach loop
 
-}//end of if block
-else
-{
-    //what should happen if we don't have data in the db?
+}else{
+ //?
 }
-    
-        ?>
-    
-</body>
-</html>
+get_footer();
