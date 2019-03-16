@@ -1,8 +1,14 @@
 <?php
+//p4_common_inc.php
+require 'p4_credentials_inc.php';
 
-//provide credentials to connect with the database
-require 'credentials.php';
-//Common class definition
+function ClearAll() {
+    unset($_SESSION['feeds']);
+}
+
+function ClearFeed($request) {
+    unset($_SESSION['feeds'][$request]);
+}
 
 class Common 
 { 
@@ -11,7 +17,7 @@ class Common
 	private function __construct() 
 	{#establishes a mysqli connection - private constructor prevents direct instance creation 
 		#hostname, username, password, database
-		$this->dbHandle = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD, DB_NAME) or die(trigger_error(mysqli_connect_error(), E_USER_ERROR)); 
+		$this->dbHandle = mysqli_connect(P4_DB_HOST,P4_DB_USER,P4_DB_PASSWORD,P4_DB_NAME) or die(trigger_error(mysqli_connect_error(), E_USER_ERROR)); 
 	}// end constructor
 
 	/** 
@@ -41,4 +47,4 @@ function getFeedData($catID) {
 			WHERE CategoryID = $catID";
     $result = mysqli_query(Common::conn(),$sql) or die(trigger_error(mysqli_error(Common::conn()), E_USER_ERROR));
     return $result; 
-}//end getFeedData
+}//end getFeedData 

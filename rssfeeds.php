@@ -1,14 +1,8 @@
-<!doctype html>
-<html>
-    
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-</head>
-
-<body>
+<?php
+require 'inc_0700/config_inc.php';
+require 'inc_0700/p4_common_inc.php';
+get_header();
+?>
 <header>
 <h1>News Aggregator</h1>
 </header>
@@ -16,7 +10,7 @@
 
 <?php
 //common classes and functions (Common and getCategoryData)
-require "config/common.php";
+
 //Category class
 require "category.php";
 
@@ -49,8 +43,4 @@ else
 {
     //what should happen if we don't have data in the db?
 }
-
-    ?>
-    
-</body>
-</html>
+get_footer();
